@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 from models import Author, Quote
 
 
@@ -14,7 +13,7 @@ def fill_data_authors(data):
     for el in data:
         author = Author()
         author.fullname = el['fullname']
-        author.born_date = datetime.strptime(el['born_date'], '%B %d, %Y').date()
+        author.born_date = el['born_date']
         author.born_location = el['born_location']
         author.description = el['description']
         author.save()
@@ -35,6 +34,7 @@ if __name__ == '__main__':
     data_for_quotes = read_data('quotes.json')
     fill_data_authors(data=data_authors)
     fill_data_quotes(data_for_quotes)
+
 
 
 
